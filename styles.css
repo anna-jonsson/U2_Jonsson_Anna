@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    height: 100%;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 72px;
+}
+
+#part1 {
+    color: rgb(73, 110, 179);
+}
+
+#part2 {
+    color: rgb(102, 132, 187)
+}
+
+#add, #filter {
+    display: flex;
+    margin-left: 20%;
+}
+
+#filter {
+    padding-top: 3vh;
+}
+
+button {
+    margin-left: 1vh;
+}
+
+.search {
+    margin-right: 2vh;
+}
+
+input {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#headlines {
+  padding-top: 3vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px 10px;
+}
+
+.city {
+    padding: 10px 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.city div {
+    display: flex;
+    align-items: center;
+}
+
+.city button {
+    width: 25%;
+}

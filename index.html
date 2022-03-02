@@ -1,55 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <h1><span id="part1">City</span> <span id="part2">Logger</span></h1>
 
     <div id="add">
-        <form id="city-form">
-            <input id="name" type="text" placeholder="City name">
-            <input id="country" type="text" placeholder="Country">
-            <input id="language" type="text" placeholder="Language">
-            <input id="visited" type="number" placeholder="No. of times visited" size="25">
-            <button id="add-btn">Add city</button>
-        </form>
+      <form id="city-form">
+        <input id="name" type="text" placeholder="City name" />
+        <input id="country" type="text" placeholder="Country" />
+        <input id="language" type="text" placeholder="Language" />
+        <input
+          id="visited"
+          type="number"
+          placeholder="No. of times visited"
+          size="25"
+        />
+        <button id="add-btn">Add city</button>
+      </form>
     </div>
 
     <div id="filter">
-        <form id="filter-by-country">
-            <input id="filter-country" type="text" placeholder="Search city by country" size="25">
-            <button class="search">Search</button>
-        </form>
+      <form id="filter-by-country">
+        <input
+          id="filter-country"
+          type="text"
+          placeholder="Search city by country"
+          size="25"
+        />
+        <button class="search">Search</button>
+      </form>
 
-        <form id="filter-by-language">
-            <input id="filter-language" type="text" placeholder="Search city by language" size="25">
-            <button class="search">Search</button>
+      <form id="filter-by-language">
+        <input
+          id="filter-language"
+          type="text"
+          placeholder="Search city by language"
+          size="25"
+        />
+        <button class="search">Search</button>
+      </form>
 
-        </form>
-
-        <button id="reset-filters">Show full list</button>
+      <button id="reset-filters">Show full list</button>
     </div>
 
-    <div id="headlines">
+    <div id="wrapper">
+      <div id="headlines">
         <div>City name</div>
         <div>Country</div>
         <div>Language</div>
-        <div>No. of times visited</div>
+        <div>Visits (no.)</div>
+      </div>
+
+      <ol id="results" type="1"></ol>
     </div>
 
-    <div id="results">
-    </div>
-    
     <script src="database.js"></script>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

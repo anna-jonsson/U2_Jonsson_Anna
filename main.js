@@ -73,7 +73,47 @@ function addCityBtnListener () {
     btn.addEventListener("click", addCityOnSubmit);
 }
 
+function removeCityByID (cities, id) {
+
+    for (let i = 0 ; i < cities.length ; i++) {
+
+        let city = cities[i];
+
+        if (city.id == id) {
+            cities.splice(i, 1);
+
+            return;
+        }
+    }
+}
+
+function removeCityBtnListener () {
+    let buttons = document.querySelectorAll(".city button");
+    
+    for (let button of buttons) {
+        button.addEventListener("click", removeCityOnClick);
+    }
+
+}
+
+function removeCityOnClick (event) {
+    let button = event.target; 
+    let id = button.parentElement.id;
+
+    if (confirm("Want to remove this city?") == true ) {
+
+    removeCityByID(database, id);
+    } else {
+
+        return false;
+    }
+    
+    renderCities(database);
+    removeCityBtnListener();
+
+}
 
 // Direct code (to be loaded parallel with site onload)
 renderCities(database);
 addCityBtnListener();
+removeCityBtnListener()

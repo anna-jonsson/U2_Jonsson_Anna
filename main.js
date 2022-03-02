@@ -28,7 +28,7 @@ function renderCity (city) {
     div.classList.add("city");
     div.id = city.id;
     div.innerHTML = `
-        <div>${city.name}</div>
+        <li>${city.name}</li>
         <div>${city.country}</div>
         <div>${city.language}</div>
         <div>${Number(city.visited)}</div>

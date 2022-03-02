@@ -16,12 +16,12 @@ h1 {
 }
 
 #part2 {
-    color: rgb(102, 132, 187)
+    color: rgb(102, 132, 187);
 }
 
 #add, #filter {
     display: flex;
-    margin-left: 20%;
+    justify-content: center;
 }
 
 #filter {
@@ -38,25 +38,88 @@ button {
 
 input {
     font-family: 'Courier New', Courier, monospace;
+    margin: 1vh;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 #headlines {
-  padding-top: 3vh;
+  margin-top: 8vh;
+  margin-bottom: 2vh;
+  margin-left: 3.5vh;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 10px 10px;
+  grid-template-columns: repeat(5, 1fr);
+  width: 600px;
+  font-family: 'Courier New', Courier, monospace;
+  
+}
+
+#headlines div {
+    color: rgb(73, 110, 179);
+  border-bottom: 1px solid rgb(102, 132, 187);
+  padding-bottom: 1vh;
 }
 
 .city {
-    padding: 10px 10px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    width: 600px;
+    margin-right: 1vh;
 }
 .city div {
     display: flex;
     align-items: center;
+    justify-content: left;
+    margin-bottom: 3vh;
+    font-family: 'Encode Sans Condensed', sans-serif;
+}
+
+.city li {
+    font-family: 'Encode Sans Condensed', sans-serif;
 }
 
 .city button {
-    width: 25%;
+    margin-bottom: 3vh;
+    margin-right: 2vh;
+}
+
+button {
+    background-color: rgba(102, 132, 187, 0.363);
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-weight: 900;
+    color: rgb(39, 51, 73);
+    transition: 0.5s;
+}
+
+#results {
+    background-color: rgba(73, 110, 179, 0.233);
+    border-radius: 20px;
+}
+
+.city:first-child{
+    padding-top: 3vh;
+}
+
+.search, #add-btn {
+    padding: 0.5vh;
+    margin-left: 0;
+}
+
+#reset-filters {
+    margin-bottom: 0.7vh;
+}
+
+button:hover {
+    background-color: rgba(59, 78, 114, 0.63);
+    cursor: pointer;
+}
+
+.search {
+    background-color: rgba(102, 132, 187, 0.199);;
 }

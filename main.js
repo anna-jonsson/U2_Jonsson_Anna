@@ -47,6 +47,8 @@ function renderCities (cities) {
         let result = renderCity(city);
         results.appendChild(result);
     }
+
+    filterBtnListener ()
 }
 
 function addCityOnSubmit (event) {
@@ -59,10 +61,15 @@ function addCityOnSubmit (event) {
 
     let city = addNewCity(name, country, language, visited);
 
+    if (name == "" || country == "" || language == "" || visited == "") {
+        return alert("You need to fill in all fields in order to add city!");
+    }
+
     city.id = database[database.length - 1].id + 1;
 
     addCityToDB(database, city);
     renderCities(database);
+    removeCityBtnListener();
 
     let form = document.getElementById("city-form");
     form.reset();
@@ -107,13 +114,80 @@ function removeCityOnClick (event) {
 
         return false;
     }
+
+    renderCities(database);
+
+}
+
+
+
+function citiesByCountry (cities, country) {
+    let countryCities = [];
+
+    for (let city of cities) {
+        if (city.country.toLowerCase() == country.toLowerCase()) {
+            countryCities.push(city);
+        }
+    }
+
+    return countryCities;
+}
+
+function citiesByLanguage (cities, language) {
+    let languageCities = [];
+
+    for (let city of cities) {
+        if (city.language.toLowerCase() == language.toLowerCase()) {
+            languageCities.push(city);
+        }
+    }
+
+    return languageCities;
+}
+
+function filterByCountry (event) {
+    event.preventDefault();
+    let countryValue = document.querySelector("#filter-country").value;
+    let cities = citiesByCountry(database, countryValue); 
+
+    renderCities(cities);
+    removeCityBtnListener();
+}
+
+function filterByLanguage (event) {
+    event.preventDefault();
+    let languageValue = document.querySelector("#filter-language").value;
+    let cities = citiesByLanguage(database, languageValue); 
+
+    renderCities(cities);
+    removeCityBtnListener();
+}
+
+function filterShowFullList () {
+    let formLanguage = document.getElementById("filter-by-language");
+    let formCountry = document.getElementById("filter-by-country");
     
+    formLanguage.reset();
+    formCountry.reset();
+
     renderCities(database);
     removeCityBtnListener();
+} 
+
+function filterBtnListener () {
+
+    let formLanguage = document.getElementById("filter-by-language");
+    let formCountry = document.getElementById("filter-by-country");
+    let formShowFullList = document.getElementById("reset-filters");
+
+    formLanguage.addEventListener("submit", filterByLanguage);
+    formCountry.addEventListener("submit", filterByCountry);
+    formShowFullList.addEventListener("click", filterShowFullList);
 
 }
 
 // Direct code (to be loaded parallel with site onload)
 renderCities(database);
 addCityBtnListener();
-removeCityBtnListener()
+filterBtnListener();
+removeCityBtnListener();

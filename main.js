@@ -4,6 +4,12 @@
 
 // ** START OF CODE ** //
 
+let header = document.querySelector("h1");
+header.addEventListener("click", function () {
+    window.location.reload()
+})
+
+
 function addNewCity (name, country, language, visited) {
 
     let city = {
@@ -65,6 +71,8 @@ function addCityOnSubmit (event) {
         return alert("You need to fill in all fields in order to add city!");
     }
 
+    alert(`${name} was added to the list!`);
+
     city.id = database[database.length - 1].id + 1;
 
     addCityToDB(database, city);
@@ -104,10 +112,11 @@ function removeCityBtnListener () {
 }
 
 function removeCityOnClick (event) {
+
     let button = event.target; 
     let id = button.parentElement.id;
 
-    if (confirm("Want to remove this city?") == true ) {
+    if (confirm(`Want to remove this city from the list?`) == true ) {
 
     removeCityByID(database, id);
     } else {
@@ -116,6 +125,7 @@ function removeCityOnClick (event) {
     }
 
     renderCities(database);
+    removeCityBtnListener();
 
 }
 
@@ -129,7 +139,6 @@ function citiesByCountry (cities, country) {
             countryCities.push(city);
         }
     }
-
     return countryCities;
 }
 
@@ -145,24 +154,6 @@ function citiesByLanguage (cities, language) {
     return languageCities;
 }
 
-function filterByCountry (event) {
-    event.preventDefault();
-    let countryValue = document.querySelector("#filter-country").value;
-    let cities = citiesByCountry(database, countryValue); 
-
-    renderCities(cities);
-    removeCityBtnListener();
-}
-
-function filterByLanguage (event) {
-    event.preventDefault();
-    let languageValue = document.querySelector("#filter-language").value;
-    let cities = citiesByLanguage(database, languageValue); 
-
-    renderCities(cities);
-    removeCityBtnListener();
-}
-
 function filterShowFullList () {
     let formLanguage = document.getElementById("filter-by-language");
     let formCountry = document.getElementById("filter-by-country");
@@ -173,6 +164,38 @@ function filterShowFullList () {
     renderCities(database);
     removeCityBtnListener();
 } 
+
+function filterByCountry (event) {
+    event.preventDefault();
+    let countryValue = document.querySelector("#filter-country").value;
+    let cities = citiesByCountry(database, countryValue); 
+
+    let formLanguage = document.getElementById("filter-by-language");
+    let formCountry = document.getElementById("filter-by-country");
+    
+    formLanguage.reset();
+    formCountry.reset();
+
+    renderCities(cities);
+    removeCityBtnListener();
+
+}
+
+function filterByLanguage (event) {
+    event.preventDefault();
+    let languageValue = document.querySelector("#filter-language").value;
+    let cities = citiesByLanguage(database, languageValue); 
+
+    let formLanguage = document.getElementById("filter-by-language");
+    let formCountry = document.getElementById("filter-by-country");
+    
+    formLanguage.reset();
+    formCountry.reset();
+
+    renderCities(cities);
+    removeCityBtnListener();
+
+}
 
 function filterBtnListener () {
 

@@ -12,11 +12,11 @@ h1 {
   margin: 0;
   position: absolute;
   top: -30px;
-  transition: 1s; 
+  transition: 1s;
 }
 
 h1:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #top-wrapper {

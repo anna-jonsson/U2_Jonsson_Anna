@@ -1,4 +1,4 @@
-//Database containing 10 default cities.
+//Database containing 10 default cities. 
 
 let database = [
     {
